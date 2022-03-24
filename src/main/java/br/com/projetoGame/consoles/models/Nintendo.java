@@ -14,33 +14,28 @@ public class Nintendo {
     private final ModoDesempenho modoDesempenho = ModoDesempenho.MODO_PADRAO;
     @OneToMany(mappedBy = "nintendo")
     private final List<Jogos> jogos = new ArrayList<>();
+    @ManyToOne
+    private Jogador jogador;
 
-    public void baixarJogo(Jogos jogo) throws Exception {
-
+    public Long getId() {
+        return id;
     }
 
-    public void desinstalarJogo(String jogoParaDesinstalar) {
-
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void atualizarJogo(String jogoAntigo, Jogos novoJogo) {
-
+    public ModoDesempenho getModoDesempenho() {
+        return modoDesempenho;
     }
 
-    public void buscarJogoPeloNome(String jogoBuscado) {
-
+    public List<Jogos> getJogos() {
+        return jogos;
     }
 
-    public void buscarJogoPeloGenero(String genero) {
-
+    public Jogador getJogador() {
+        return jogador;
     }
 
-    public void buscarJogoPeloAnoDeLancamento(int anoDeLancamento) {
-
-    }
-
-    public void getJogos() {
-
-    }
 
 }

@@ -1,8 +1,7 @@
 package br.com.projetoGame.consoles.models;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
@@ -14,42 +13,50 @@ public class Jogos {
     private String genero;
     @ManyToOne
     private Nintendo nintendo;
-    private LocalDate dataDeLancamento;
+    private LocalDateTime dataDeLancamento = LocalDateTime.now();
 
-    public Jogos() {
+    public Long getId() {
+        return id;
     }
 
-    public Jogos(String nome, String genero, String descricao, LocalDate dataDeLancamento) {
-        this.nome = nome;
-        this.genero = genero;
-        this.descricao = descricao;
-        this.dataDeLancamento = dataDeLancamento;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
-        return this.nome;
+        return nome;
     }
 
-    public String getGenero() {
-        return this.genero;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getDescricao() {
-        return this.descricao;
+        return descricao;
     }
 
-    public LocalDate getDataDeLancamento() {
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public Nintendo getNintendo() {
+        return nintendo;
+    }
+
+    public void setNintendo(Nintendo nintendo) {
+        this.nintendo = nintendo;
+    }
+
+    public LocalDateTime getDataDeLancamento() {
         return dataDeLancamento;
-    }
-
-    @Override
-    public String toString() {
-        return "Jogo{" +
-                "nome: " + this.nome +
-                ", descricao: " + this.descricao +
-                ", genero: " + this.genero +
-                ", Data de Lançamento: " + this.dataDeLancamento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) +
-                '}';
     }
 
     @Override
