@@ -1,25 +1,29 @@
 package br.com.projetoGame.consoles.controller.dto;
 
-import br.com.projetoGame.consoles.models.Jogador;
 import br.com.projetoGame.consoles.models.Jogos;
 import br.com.projetoGame.consoles.models.Nintendo;
 import br.com.projetoGame.consoles.models.enums.ModoDesempenho;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NintendoDto {
-    private Long id;
-    private ModoDesempenho modoDesempenho;
-    private List<Jogos> jogos;
+    private final ModoDesempenho modoDesempenho;
+    private final String apelidoConsole;
+    private final List<Jogos> jogos;
+    private final Long identificadorConsole;
 
     public NintendoDto(Nintendo nintendo) {
-        this.id = nintendo.getId();
+        this.identificadorConsole = nintendo.getIdentificadorConsole();
         this.modoDesempenho = nintendo.getModoDesempenho();
         this.jogos = nintendo.getJogos();
+        this.apelidoConsole = nintendo.getApelidoConsole();
     }
 
-    public Long getId() {
-        return id;
+    public static List<NintendoDto> converte(List<Nintendo> nintendo) {
+        List<NintendoDto> nintendoDto = new ArrayList<>();
+        nintendo.forEach(value -> nintendoDto.add(new NintendoDto(value)));
+        return nintendoDto;
     }
 
     public ModoDesempenho getModoDesempenho() {
@@ -28,5 +32,13 @@ public class NintendoDto {
 
     public List<Jogos> getJogos() {
         return jogos;
+    }
+
+    public String getApelidoConsole() {
+        return apelidoConsole;
+    }
+
+    public Long getIdentificadorConsole() {
+        return identificadorConsole;
     }
 }

@@ -1,6 +1,7 @@
 package br.com.projetoGame.consoles.models;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -10,6 +11,7 @@ public class Jogador {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    private LocalDateTime dataCriacao = LocalDateTime.now();
     @OneToMany(mappedBy = "jogador")
     private final List<Nintendo> nintendo = new ArrayList<>();
 
@@ -37,6 +39,14 @@ public class Jogador {
 
     public List<Nintendo> getNintendo() {
         return nintendo;
+    }
+
+    public LocalDateTime getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(LocalDateTime dataCriacao) {
+        this.dataCriacao = dataCriacao;
     }
 
     @Override
