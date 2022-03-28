@@ -1,26 +1,49 @@
 package br.com.projetoGame.consoles.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
 public class Jogos {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idJogos;
+    @NotNull
+    @Length(min = 1, max = 80)
     private String nome;
+    @NotNull
+    @Length(min = 1, max = 1000)
     private String descricao;
+    @NotBlank
+    @Length(min = 1, max = 30)
+    //TODO da para transformar em um ENUM
     private String genero;
     @ManyToOne
+    @JsonBackReference
     private Nintendo nintendo;
-    private LocalDateTime dataDeLancamento = LocalDateTime.now();
+    private final LocalDateTime dataDeLancamento = LocalDateTime.now();
 
-    public Long getId() {
-        return id;
+    public Jogos() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Jogos(String nome, String descricao, String genero,Nintendo nintendo) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.genero = genero;
+        this.nintendo = nintendo;
+    }
+
+    public Long getIdJogos() {
+        return idJogos;
+    }
+
+    public void setIdJogos(Long novoIdJogos) {
+        this.idJogos = novoIdJogos;
     }
 
     public String getNome() {

@@ -1,18 +1,23 @@
 package br.com.projetoGame.consoles.models;
 
 import br.com.projetoGame.consoles.models.enums.ModoDesempenho;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Nintendo {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long identificadorConsole;
+    private Long idConsole;
+    @NotBlank @Length(min = 1, max = 36)
     private String apelidoConsole;
     @Enumerated(EnumType.STRING)
     private ModoDesempenho modoDesempenho = ModoDesempenho.MODO_PADRAO;
+    @JsonManagedReference
     @OneToMany(mappedBy = "nintendo")
     private final List<Jogos> jogos = new ArrayList<>();
     @ManyToOne
@@ -27,12 +32,12 @@ public class Nintendo {
         this.jogador = jogador;
     }
 
-    public Long getIdentificadorConsole() {
-        return identificadorConsole;
+    public Long getIdConsole() {
+        return idConsole;
     }
 
-    public void setIdentificadorConsole(Long identificadorConsole) {
-        this.identificadorConsole = identificadorConsole;
+    public void setIdConsole(Long idConsole) {
+        this.idConsole = idConsole;
     }
 
     public ModoDesempenho getModoDesempenho() {

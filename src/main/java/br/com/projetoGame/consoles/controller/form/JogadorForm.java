@@ -1,6 +1,5 @@
 package br.com.projetoGame.consoles.controller.form;
 
-import br.com.projetoGame.consoles.controller.dto.JogadorDto;
 import br.com.projetoGame.consoles.models.Jogador;
 import br.com.projetoGame.consoles.repository.JogadorRepository;
 import org.hibernate.validator.constraints.Length;
