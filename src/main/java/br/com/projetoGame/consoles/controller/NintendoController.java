@@ -73,6 +73,6 @@ public class NintendoController {
                     nintendoRepository.deleteById(identificadorConsole);
                     return ResponseEntity.ok().build();
                 })
-                .orElseGet(() -> ResponseEntity.notFound().build());
+                .orElseGet(() -> ResponseEntity.notFound().build());.
     }
 }
