@@ -11,10 +11,10 @@ public class NintendoDto {
     private final ModoDesempenho modoDesempenho;
     private final String apelidoConsole;
     private final List<Jogos> jogos;
-    private final Long identificadorConsole;
+    private final Long idConsole;
 
     public NintendoDto(Nintendo nintendo) {
-        this.identificadorConsole = nintendo.getIdentificadorConsole();
+        this.idConsole = nintendo.getIdConsole();
         this.modoDesempenho = nintendo.getModoDesempenho();
         this.jogos = nintendo.getJogos();
         this.apelidoConsole = nintendo.getApelidoConsole();
@@ -38,7 +38,7 @@ public class NintendoDto {
         return apelidoConsole;
     }
 
-    public Long getIdentificadorConsole() {
-        return identificadorConsole;
+    public Long getIdConsole() {
+        return idConsole;
     }
 }

@@ -1,18 +1,16 @@
 package br.com.projetoGame.consoles.controller.dto;
 
 import br.com.projetoGame.consoles.models.Jogador;
-import br.com.projetoGame.consoles.models.Nintendo;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class JogadorDto {
     private final Long id;
     private final String nome;
-    private LocalDateTime dataCriacao;
-    private List<NintendoDto> nintendo = new ArrayList<>();
+    private final LocalDateTime dataCriacao;
+    private final List<NintendoDto> nintendo = new ArrayList<>();
 
     public JogadorDto(Jogador jogador) {
         this.id = jogador.getId();

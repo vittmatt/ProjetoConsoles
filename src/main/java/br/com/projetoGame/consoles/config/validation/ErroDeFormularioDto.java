@@ -1,8 +1,8 @@
 package br.com.projetoGame.consoles.config.validation;
 
 public class ErroDeFormularioDto {
-    private String campo;
-    private String mensagem;
+    private final String campo;
+    private final String mensagem;
 
 
     public ErroDeFormularioDto(String campo, String mensagem) {
