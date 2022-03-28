@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface JogadorRepository extends JpaRepository<Jogador, Long> {
 
-    public List<Jogador> findByNome(String nome);
+    List<Jogador> findByNome(String nome);
 }
